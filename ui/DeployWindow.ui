@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DeployWindow</class>
+ <widget class="QDialog" name="DeployWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>200</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Deploy Project</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../icons/icons.qrc">
+    <normaloff>:/compare.ico</normaloff>:/compare.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 	#e0effa, stop:1 rgba(255, 255, 255, 255));
+}
+
+QFrame#frame {
+    border: 2px solid #386bd2;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	padding: 2px;
+}
+
+QLabel {
+	font-size: 14px;
+	color: #555;
+	font-family: Candara, Calibri, Segoe, &quot;Segoe UI&quot;, Optima, Arial, sans-serif;
+}
+
+QPushButton {
+	font-size: 14px;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	color: #66afe9;
+	background-color: #fff;
+	border-color: rgb(185, 185, 185);
+}
+
+QPushButton:hover {
+	color: #fff;
+	background-color: #66afe9;
+	border-color: #66afe9;
+}
+QPushButton:pressed {
+	color: #fff;
+	background-color: #518cba;
+	border-color: #518cba;
+}
+</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QPushButton" name="buttonAccept">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>140</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Accept</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonCancel">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>140</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_warning">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>341</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../icons/icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

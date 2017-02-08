@@ -1,0 +1,6 @@
+item_delegate = QtGui.QStyledItemDelegate()
+self.comboServer.setItemDelegate(item_delegate)
+
+
+self.comboServer.lineEdit().setPlaceholderText('Enter Server')
+

@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SSIS Deployment Check</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../icons/icons.qrc">
+    <normaloff>:/compare.ico</normaloff>:/compare.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#centralwidget {
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #e0effa, stop:1 rgba(255, 255, 255, 255));
+}
+
+/* Combo Box Styles*/
+QComboBox {
+	padding: 6px 12px;
+	font-size: 14px;
+	color: #555;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+QComboBox:focus{
+	border-color: #66afe9;
+	outline: 0;
+}
+QComboBox:editable:on {
+	 border-color: #66afe9;
+}
+
+/*Combo Box DropDown Button*/
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+    border-left-width: 1px;
+    border-left-color: #ccc;
+    border-left-style: solid; /* just a single line */
+    border-top-right-radius: 4px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 4px;
+	background-color: #fff;
+}
+QComboBox::drop-down:hover {
+	border-color: #66afe9;
+	background-color: #66afe9;
+}
+
+/*Combo Box DropDown Arrow*/
+QComboBox::down-arrow {
+	width: 0; 
+	height: 0; 
+	border-left: 4px solid #fff;
+	border-right: 4px solid #fff;
+	border-top: 4px solid #66afe9;
+}
+QComboBox::down-arrow:hover {
+width: 0; 
+  height: 0; 
+  border-left: 4px solid #66afe9;
+  border-right: 4px solid #66afe9;
+  border-top: 4px solid #fff;}
+
+/*Combo Box DropDown List*/
+QComboBox QAbstractItemView::item {
+	padding: 6px 12px;
+	font-size: 14px;
+	color: #555; 
+}
+
+QComboBox QAbstractItemView {
+	border: 1px solid #66afe9;
+}
+QToolBar {
+    background-color: #b2d7f4;
+	border: transparent
+}
+QMenuBar {
+    background-color: #66afe9;
+font-size:14px;
+/*font-family: Century Gothic, sans-serif;*/
+font-family: Futura, &quot;Trebuchet MS&quot;, Arial, sans-serif;
+}
+QMenuBar::item {
+    spacing: 10px; /* spacing between menu bar items */
+    padding: 8px 10px;
+    background: transparent;
+    border-radius: 4px;
+	color: #fff;
+	font: 20px;
+}
+QMenuBar::item:selected { /* when selected using mouse or keyboard */
+    background: #518cba;
+}
+QMenuBar::item:pressed {
+    background: #3d698b;
+}
+
+QMenu {
+    background-color: #66afe9; /* sets background of the menu */
+    border: transparent;
+	border-radius: 4px;
+}
+
+QMenu::item {
+    /* sets background of menu item. set this to something non-transparent
+        if you want menu color and menu item color to be different */
+    background-color: transparent;
+}
+QMenu::item:selected {
+    background-color: #518cba;
+}
+QMenu::item:pressed {
+    background-color: #3d698b;
+}
+
+QListView {
+    border: yellow;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QComboBox" name="comboServer">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>30</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="insertPolicy">
+     <enum>QComboBox::NoInsert</enum>
+    </property>
+    <item>
+     <property name="text">
+      <string/>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>192.168.123.178</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>192.168.120.131</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="comboFile">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>80</y>
+      <width>601</width>
+      <height>33</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="insertPolicy">
+     <enum>QComboBox::NoInsert</enum>
+    </property>
+    <item>
+     <property name="text">
+      <string/>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>C:\Datawarehouse\DW-ACDSv2\Dev-branch</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>C:\Datawarehouse\DW-ACDSv2\Dev-branch\SSIS DWStaging</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="buttonBrowse">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>80</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	font-size: 14px;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	color: #66afe9;
+	background-color: #fff;
+	border-color: rgb(185, 185, 185);
+}
+
+QPushButton:hover {
+	color: #fff;
+	background-color: #66afe9;
+	border-color: #66afe9;
+}
+QPushButton:pressed {
+	color: #fff;
+	background-color: #518cba;
+	border-color: #518cba;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Browse</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonCompare">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>160</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	font-size: 14px;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	color: #66afe9;
+	background-color: #fff;
+	border-color: rgb(185, 185, 185);
+}
+
+QPushButton:hover {
+	color: #fff;
+	background-color: #66afe9;
+	border-color: #66afe9;
+}
+QPushButton:pressed {
+	color: #fff;
+	background-color: #518cba;
+	border-color: #518cba;
+}</string>
+    </property>
+    <property name="text">
+     <string>Compare</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSuccessImage">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	padding: 5px 5px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../icons/icons.qrc">:/green_tick.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSuccessImage_File">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	padding: 5px 5px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../icons/icons.qrc">:/green_tick.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboProject">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>30</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="insertPolicy">
+     <enum>QComboBox::NoInsert</enum>
+    </property>
+    <item>
+     <property name="text">
+      <string/>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>192.168.123.178</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>192.168.120.131</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QTreeWidget" name="treeWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>230</y>
+      <width>761</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+/* Tree View Settings */
+QTreeView {
+    padding: 3px 12px;
+	padding-right: 3px;
+	font-size: 14px;
+	color: #555;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+QTreeView::item:open {
+    font-size: 14px;
+font: bold;
+}
+
+/* Header Settings */
+QHeaderView {
+	height: 70px;
+	font-size: 16px;
+	color: rgb(53, 53, 53);
+	background-color: #fff;
+}
+
+/* Scroll Bar Settings */
+QScrollBar:vertical {
+     border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+     background: #fff;
+     width: 15px;
+     margin: 22px 0 22px 0;
+ }
+/* Scroll Bar Handle */
+ QScrollBar::handle:vertical {
+     background: #66afe9;
+     max-height: 10px;
+ }
+ QScrollBar::handle:vertical:hover {
+     background: #518cba;
+     max-height: 10px;
+ }
+QScrollBar::handle:vertical:pressed {
+     background: #3d698b;
+     max-height: 10px;
+ }
+/* Scroll Bar Bottom Button Settings */
+ QScrollBar::add-line:vertical {
+     border: 1px solid #ccc;
+     background: #fff;
+     height: 20px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+ }
+ QScrollBar::add-line:vertical:hover {
+     border: 1px solid #ccc;
+     background: #66afe9;
+     height: 20px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+ }
+ QScrollBar::add-line:vertical:pressed {
+     border: 1px solid #ccc;
+     background: #518cba;
+     height: 20px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+ }
+/* Scroll Bar Top Button Settings */
+ QScrollBar::sub-line:vertical {
+     border: 1px solid #ccc;
+     background: #fff;
+     height: 20px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+ }
+  QScrollBar::sub-line:vertical:hover {
+     border: 1px solid #ccc;
+     background: #66afe9;
+     height: 20px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+ }
+ QScrollBar::sub-line:vertical:pressed {
+     border: 1px solid #ccc;
+     background: #518cba;
+     height: 20px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+ }
+/* Scroll Bar Down Arrow Settings */
+QScrollBar::down-arrow:vertical {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-left: 4px solid #fff;
+	border-right: 4px solid #fff;
+	border-top: 4px solid #66afe9;
+}
+QScrollBar::down-arrow:vertical:hover {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-left: 4px solid #66afe9;
+	border-right: 4px solid #66afe9;
+	border-top: 4px solid #fff;
+}
+QScrollBar::down-arrow:vertical:pressed {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-left: 4px solid #518cba;
+	border-right: 4px solid #518cba;
+	border-top: 4px solid #fff;
+}
+/* Scroll Bar Up Arrow Settings */
+QScrollBar::up-arrow:vertical {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-left: 4px solid #fff;
+	border-right: 4px solid #fff;
+	border-bottom: 4px solid #66afe9;
+}
+QScrollBar::up-arrow:vertical:hover {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-left: 4px solid #66afe9;
+	border-right: 4px solid #66afe9;
+	border-bottom: 4px solid #fff;
+}
+QScrollBar::up-arrow:vertical:pressed {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-left: 4px solid #518cba;
+	border-right: 4px solid #518cba;
+	border-bottom: 4px solid #fff;
+}
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }
+/* Scroll Bar Settings */
+QScrollBar:horizontal {
+     border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+     background: #fff;
+     height: 15px;
+     margin: 0 22px 0 22px;
+ }
+/* Scroll Bar Handle */
+ QScrollBar::handle:horizontal {
+     background: #66afe9;
+    min-width: 20px;
+ }
+ QScrollBar::handle:horizontal:hover {
+     background: #518cba;
+    min-width: 20px;
+ }
+QScrollBar::handle:horizontal:pressed {
+     background: #3d698b;
+	min-width: 20px;
+ }
+/* Scroll Bar Right Button Settings */
+ QScrollBar::add-line:horizontal {
+     border: 1px solid #ccc;
+     background: #fff;
+     width: 20px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+ }
+ QScrollBar::add-line:horizontal:hover {
+     border: 1px solid #ccc;
+     background: #66afe9;
+     width: 20px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+ }
+ QScrollBar::add-line:horizontal:pressed {
+     border: 1px solid #ccc;
+     background: #518cba;
+     width: 20px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+ }
+/* Scroll Bar Left Button Settings */
+ QScrollBar::sub-line:horizontal {
+     border: 1px solid #ccc;
+     background: #fff;
+     width: 20px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+ }
+  QScrollBar::sub-line:horizontal:hover {
+     border: 1px solid #ccc;
+     background: #66afe9;
+     width: 20px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+ }
+ QScrollBar::sub-line:horizontal:pressed {
+     border: 1px solid #ccc;
+     background: #518cba;
+     width: 20px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+ }
+/* Scroll Bar Left Arrow Settings */
+QScrollBar::left-arrow:horizontal {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-top: 4px solid #fff;
+	border-bottom: 4px solid #fff;
+	border-right: 4px solid #66afe9;
+}
+QScrollBar::left-arrow:horizontal:hover {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-top: 4px solid #66afe9;
+	border-bottom: 4px solid #66afe9;
+	border-right: 4px solid #fff;
+}
+QScrollBar::left-arrow:horizontal:pressed {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-top: 4px solid #518cba;
+	border-bottom: 4px solid #518cba;
+	border-right: 4px solid #fff;
+}
+/* Scroll Bar Right Arrow Settings */
+QScrollBar::right-arrow:horizontal {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-top: 4px solid #fff;
+	border-bottom: 4px solid #fff;
+	border-left: 4px solid #66afe9;
+}
+QScrollBar::right-arrow:horizontal:hover {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-top: 4px solid #66afe9;
+	border-bottom: 4px solid #66afe9;
+	border-left: 4px solid #fff;
+}
+QScrollBar::right-arrow:horizontal:pressed {
+	subcontrol-origin: margin;
+	subcontrol-position: center;
+	width: 0; 
+	height: 0; 
+	border-top: 4px solid #518cba;
+	border-bottom: 4px solid #518cba;
+	border-left: 4px solid #fff;
+}
+ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+     background: none;
+ }</string>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <attribute name="headerDefaultSectionSize">
+     <number>100</number>
+    </attribute>
+    <attribute name="headerMinimumSectionSize">
+     <number>50</number>
+    </attribute>
+    <attribute name="headerStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Project</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Local</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Server</string>
+     </property>
+    </column>
+    <item>
+     <property name="text">
+      <string>Presentation</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../icons/icons.qrc">
+       <normaloff>:/project.ico</normaloff>:/project.ico</iconset>
+     </property>
+     <item>
+      <property name="text">
+       <string>Missing</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../icons/icons.qrc">
+        <normaloff>:/folder.png</normaloff>:/folder.png</iconset>
+      </property>
+      <item>
+       <property name="text">
+        <string>Package1.dtsx</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../icons/icons.qrc">
+         <normaloff>:/package.png</normaloff>:/package.png</iconset>
+       </property>
+       <property name="text">
+        <string>123</string>
+       </property>
+       <property name="text">
+        <string>333</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>New Item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+     </item>
+     <item>
+      <property name="text">
+       <string>New</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../icons/icons.qrc">
+        <normaloff>:/folder.png</normaloff>:/folder.png</iconset>
+      </property>
+      <item>
+       <property name="text">
+        <string>Package2.dtsx</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../icons/icons.qrc">
+         <normaloff>:/package.png</normaloff>:/package.png</iconset>
+       </property>
+      </item>
+     </item>
+    </item>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionReset"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionHelp"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionReset"/>
+   <addaction name="actionExit"/>
+  </widget>
+  <action name="actionReset">
+   <property name="icon">
+    <iconset resource="../icons/icons.qrc">
+     <normaloff>:/reset.png</normaloff>:/reset.png</iconset>
+   </property>
+   <property name="text">
+    <string>Reset</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="../icons/icons.qrc">
+     <normaloff>:/exit.png</normaloff>:/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../icons/icons.qrc"/>
+  <include location="../icons/icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

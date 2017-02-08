@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AboutWindow</class>
+ <widget class="QDialog" name="AboutWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>About</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../icons/icons.qrc">
+    <normaloff>:/compare.ico</normaloff>:/compare.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 	#e0effa, stop:1 rgba(255, 255, 255, 255));
+}
+
+QFrame#frame {
+    border: 2px solid #386bd2;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	padding: 2px;
+}
+
+QLabel#label_title {
+	color: #386bd2;
+	font-size: 20px;
+	font-family: Candara, Calibri, Segoe, &quot;Segoe UI&quot;, Optima, Arial, sans-serif;
+	font-weight:bold;
+}
+
+QLabel#label_change {
+	font-size: 12px;
+	font-family: Tahoma, Verdana, Segoe, sans-serif;
+	padding-left: 10px;
+}
+
+</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>481</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label_icon">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>41</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../icons/icons.qrc">:/compare.ico</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_title">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>20</y>
+      <width>301</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>SSIS Deployment Checker</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="widget_details" native="true">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>96</y>
+     <width>481</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+	font-size: 12px;
+	font-family: Tahoma, Verdana, Segoe, sans-serif;
+	padding-left: 10px;
+}
+</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label_details">
+      <property name="text">
+       <string>SSIS Deployment Checker
+©2016, Paul Lucas
+Created and developed by Paul Lucas
+Version 2.3.0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_contact">
+      <property name="text">
+       <string>Contact:
+PGLucas@gmail.com</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label_change">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>190</y>
+     <width>451</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Changelog:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../icons/icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

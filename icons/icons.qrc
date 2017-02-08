@@ -1,0 +1,12 @@
+<RCC>
+	<qresource>
+		<file>exit.png</file>
+		<file>reset.png</file>
+		<file>green_tick.png</file>
+		<file>red_cross.png</file>
+		<file>compare.ico</file>
+		<file>project.ico</file>
+		<file>package.png</file>
+		<file>folder.png</file>
+	</qresource>
+</RCC>
